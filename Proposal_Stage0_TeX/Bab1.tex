@@ -1,0 +1,59 @@
+\section{Pendahuluan}
+
+% `Berikut merupakan List fitur :`
+% 1. Age : Umur kandidat
+% 2. Gender : Jenis kelamin kandidat (0 , 1) 
+% 3. EducationLevel : Tingkat pendidikan kandidat (1 - 5)
+% 4. ExperienceYears : Jumlah tahun pengalaman kandidat
+% 5. PreviousCompanies : Jumlah perusahaan sebelumnya kandidat
+% 6. DistanceFromCompany : Jarak dari rumah ke perusahaan 
+% 7. InterviewScore : Skor wawancara kandidat (1 - 100)
+% 8. SkillScore : Skor keterampilan kandidat (1 - 100)
+% 9. PersonalityScore : Skor kepribadian kandidat (1 - 100)
+% 10. RecruitmentStrategy : Strategi rekrutmen (1,2,3)
+
+% Label Target :
+% 11. HiringDecision : Keputusan perekrutan (0 = Tidak, 1 = Ya)
+
+%buat latar belakang tentang data yang digunakan
+\subsection{Latar Belakang}
+Dalam dunia perekrutan karyawan, pengambilan keputusan yang tepat sangat penting untuk memastikan bahwa perusahaan mendapatkan kandidat yang paling sesuai dengan kebutuhan dan budaya organisasi. Dengan kemajuan teknologi dan analisis data, perusahaan kini dapat memanfaatkan data historis untuk meningkatkan proses perekrutan mereka. Dataset yang digunakan dalam proyek ini berisi informasi tentang berbagai kandidat yang telah melamar pekerjaan di sebuah perusahaan, termasuk fitur-fitur seperti umur, jenis kelamin, tingkat pendidikan, pengalaman kerja, dan skor wawancara. Dengan menganalisis data ini, kita dapat mengidentifikasi pola dan faktor-faktor yang mempengaruhi keputusan perekrutan, sehingga membantu perusahaan dalam membuat keputusan yang lebih baik di masa depan.
+
+\subsection{Riset Bisnis}
+
+Dalam konteks bisnis, proses perekrutan yang efisien dan efektif sangat penting untuk keberhasilan jangka panjang perusahaan. Dengan menggunakan data historis dari proses perekrutan sebelumnya, perusahaan dapat mengidentifikasi karakteristik kandidat yang paling berhasil dan sesuai dengan kebutuhan organisasi. Hal ini tidak hanya membantu dalam mengurangi biaya dan waktu yang dihabiskan untuk proses perekrutan, tetapi juga mening katkan kualitas karyawan yang direkrut. Dengan demikian, analisis data ini dapat memberikan wawasan berharga bagi tim HR dan manajemen dalam mengoptimalkan strategi perekrutan mereka.
+
+%tekankan untuk manajemen biaya yang efisien menggunakan model machine learning
+Adapun penggunaan model machine learning dalam proses perekrutan ini dapat membantu perusahaan dalam mengelola biaya secara lebih efisien. Dengan memprediksi kandidat yang memiliki kemungkinan besar untuk diterima berdasarkan data historis, perusahaan dapat mengurangi jumlah pengiriman email penolakan. Hal ini tidak hanya menghemat waktu dan sumber daya, tetapi juga memungkinkan tim HR untuk lebih fokus pada aspek-aspek lain dari proses perekrutan, seperti pengembangan karyawan dan retensi. Dengan demikian, implementasi model machine learning dalam proses perekrutan dapat memberikan manfaat ekonomi yang signifikan bagi perusahaan.
+
+
+\subsection{Problem Statement}
+
+% 1500 kandidat pada dataset, ada 69% kandidat yang diterima dan 31% kandidat yang ditolak
+% HiringDecision
+% 0    69.0
+% 1    31.0
+% Name: proportion, dtype: float64
+
+Berdasarkan analisis awal terhadap dataset perekrutan, ditemukan bahwa terdapat ketidakseimbangan yang signifikan antara jumlah kandidat yang diterima dan ditolak. Dari total 1500 kandidat, sekitar 69\% diterima sementara 31\% ditolak. Hal ini menyebabkan banyaknya email penolakan yang harus dikirimkan oleh perusahaan, yang pada akhirnya dapat meningkatkan biaya operasional dan mengurangi efisiensi proses perekrutan. Oleh karena itu, penting untuk mengembangkan model machine learning yang dapat memprediksi keputusan perekrutan dengan akurasi tinggi, sehingga perusahaan dapat mengurangi jumlah email penolakan yang perlu dikirimkan. Dengan demikian, tujuan utama dari proyek ini adalah untuk menciptakan model prediktif yang tidak hanya akurat tetapi juga mampu menangani ketidakseimbangan kelas dalam dataset, sehingga membantu perusahaan dalam mengoptimalkan proses perekrutan mereka.
+
+
+\subsection{Goals and Objectives}
+Adapun Tujuan dan Objektif dari proyek ini adalah sebagai berikut:
+
+\begin{enumerate}
+    \item Mengembangkan model machine learning yang dapat memprediksi keputusan perekrutan (HiringDecision) dengan akurasi tinggi.
+    \item Mengurangi jumlah email penolakan yang perlu dikirimkan oleh perusahaan, sehingga mengoptimalkan biaya operasional.
+    \item Menekan Biaya perusahaan dalam proses perekrutan dengan memanfaatkan analisis data historis.
+\end{enumerate}
+
+
+Business metric yang relevan untuk ditingkatkan adalah sebagai berikut:
+\begin{enumerate}
+    \item Akurasi Model: Meningkatkan akurasi prediksi model untuk memastikan keputusan perekrutan yang lebih tepat.
+    \item Precision dan Recall: Meningkatkan precision untuk mengurangi jumlah false positives (kandidat yang diprediksi diterima tetapi sebenarnya ditolak) dan recall untuk memastikan bahwa kandidat yang layak tidak terlewatkan.
+    \item Reduksi Biaya Operasional: Mengukur pengurangan biaya yang terkait dengan pengiriman email penolakan dan proses perekrutan secara keseluruhan.
+    \item Waktu Proses Perekrutan: Mengurangi waktu yang dibutuhkan untuk menyelesaikan proses perekrutan dengan menggunakan model prediktif.
+\end{enumerate}
+
+
