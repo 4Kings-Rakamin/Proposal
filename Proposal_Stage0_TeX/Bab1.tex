@@ -35,25 +35,42 @@ Adapun penggunaan model machine learning dalam proses perekrutan ini dapat memba
 % 1    31.0
 % Name: proportion, dtype: float64
 
-Berdasarkan analisis awal terhadap dataset perekrutan, ditemukan bahwa terdapat ketidakseimbangan yang signifikan antara jumlah kandidat yang diterima dan ditolak. Dari total 1500 kandidat, sekitar 69\% diterima sementara 31\% ditolak. Hal ini menyebabkan banyaknya email penolakan yang harus dikirimkan oleh perusahaan, yang pada akhirnya dapat meningkatkan biaya operasional dan mengurangi efisiensi proses perekrutan. Oleh karena itu, penting untuk mengembangkan model machine learning yang dapat memprediksi keputusan perekrutan dengan akurasi tinggi, sehingga perusahaan dapat mengurangi jumlah email penolakan yang perlu dikirimkan. Dengan demikian, tujuan utama dari proyek ini adalah untuk menciptakan model prediktif yang tidak hanya akurat tetapi juga mampu menangani ketidakseimbangan kelas dalam dataset, sehingga membantu perusahaan dalam mengoptimalkan proses perekrutan mereka.
+Proses rekrutmen sering menghadapi berbagai tantangan, seperti banyaknya jumlah pelamar, keterbatasan waktu dalam melakukan penilaian, serta tingginya tingkat subjektivitas yang dapat memengaruhi konsistensi pengambilan keputusan. Kompleksitas parameter penilaian yang mencakup kompetensi, keterampilan, dan faktor demografi semakin meningkatkan risiko perusahaan gagal merekrut kandidat potensial. Dataset yang digunakan dalam penelitian ini (recruitment\_data.csv) berisi 1.500 data historis kandidat yang mencakup usia, gender, tingkat pendidikan, pengalaman kerja, jumlah perusahaan sebelumnya, jarak tempat tinggal dari kantor, skor wawancara, skor keterampilan, skor kepribadian, strategi rekrutmen, serta keputusan akhir perekrutan (HiringDecision). 
+
+Dari hasil analisis awal, ditemukan ketidakseimbangan yang signifikan dalam distribusi kelas, di mana sekitar 69\%  kandidat diterima dan 31\% ditolak. Kondisi ini menyebabkan perusahaan harus mengirim banyak email penolakan, yang pada akhirnya meningkatkan biaya operasional dan menurunkan efisiensi rekrutmen. Oleh karena itu, proyek ini bertujuan untuk mengembangkan model machine learning yang mampu memprediksi keputusan perekrutan secara akurat sekaligus menangani ketidakseimbangan kelas, sehingga perusahaan dapat mengoptimalkan proses rekrutmen dan meminimalisasi risiko kegagalan dalam merekrut kandidat potensial.
 
 
-\subsection{Goals and Objectives}
-Adapun Tujuan dan Objektif dari proyek ini adalah sebagai berikut:
+\subsection{Goals, Objectives, and Business Metrics}
 
+Tujuan utama dari proyek ini adalah membangun model machine learning yang dapat membantu proses pengambilan keputusan perekrutan karyawan secara lebih cepat, objektif, dan konsisten. Dengan memanfaatkan data historis perekrutan, model ini diharapkan mampu memberikan rekomendasi kandidat potensial serta mengurangi bias subjektif dalam proses seleksi.
+
+\textbf{Objectives:}
 \begin{enumerate}
-    \item Mengembangkan model machine learning yang dapat memprediksi keputusan perekrutan (HiringDecision) dengan akurasi tinggi.
-    \item Mengurangi jumlah email penolakan yang perlu dikirimkan oleh perusahaan, sehingga mengoptimalkan biaya operasional.
-    \item Menekan Biaya perusahaan dalam proses perekrutan dengan memanfaatkan analisis data historis.
+    \item Mengembangkan model prediktif berdasarkan data historis recruitment untuk mengklasifikasikan kandidat apakah diterima atau tidak.
+    \item Mengidentifikasi kandidat potensial yang memiliki probabilitas keberhasilan tinggi.
+    \item Mempercepat proses identifikasi kandidat sebagai penilaian awal HR dalam mengambil keputusan.
+    \item Mengurangi bias subjektif dengan menyediakan sistem pendukung keputusan berbasis data.
+    \item Menyediakan interpretasi hasil model melalui analisis feature importance agar perusahaan mengetahui faktor yang paling memengaruhi keputusan perekrutan.
 \end{enumerate}
 
-
-Business metric yang relevan untuk ditingkatkan adalah sebagai berikut:
+\textbf{Business Metrics:}
 \begin{enumerate}
-    \item Akurasi Model: Meningkatkan akurasi prediksi model untuk memastikan keputusan perekrutan yang lebih tepat.
-    \item Precision dan Recall: Meningkatkan precision untuk mengurangi jumlah false positives (kandidat yang diprediksi diterima tetapi sebenarnya ditolak) dan recall untuk memastikan bahwa kandidat yang layak tidak terlewatkan.
-    \item Reduksi Biaya Operasional: Mengukur pengurangan biaya yang terkait dengan pengiriman email penolakan dan proses perekrutan secara keseluruhan.
-    \item Waktu Proses Perekrutan: Mengurangi waktu yang dibutuhkan untuk menyelesaikan proses perekrutan dengan menggunakan model prediktif.
+    \item \textbf{Akurasi Model:} Akurasi prediksi $\geq 85\%$ untuk memastikan keputusan perekrutan yang lebih tepat.
+    \item \textbf{Precision:} Precision $\geq 80\%$, agar recruiter dapat mengurangi jumlah kandidat ``false positive'' yang tidak sesuai.
+    \item \textbf{Recall dan F1-Score:} Recall yang baik untuk meminimalisasi hilangnya kandidat potensial, dengan target F1-Score $\geq 75\%$ agar model seimbang antara precision dan recall.
+    \item \textbf{AUC:} Nilai AUC $\geq 85\%$ untuk menjamin kestabilan performa model pada berbagai threshold dalam proses shortlisting kandidat.
+    \item \textbf{Efisiensi Waktu:} Mengurangi waktu screening kandidat sehingga proses rekrutmen lebih cepat dan efisien.
+    \item \textbf{Reduksi Biaya:} Menurunkan biaya operasional terkait dengan pengiriman email penolakan dan proses administrasi perekrutan.
 \end{enumerate}
+
+\subsection{Gap Analysis}
+Saat ini belum tersedia sistem prediksi keputusan perekrutan berbasis data yang cepat dan objektif. Proses pengambilan keputusan HR masih didominasi oleh penilaian subjektif, membutuhkan waktu yang relatif lama, serta tidak memberikan insight yang jelas terkait faktor-faktor yang memengaruhi keputusan, seperti kompetensi, keterampilan, dan aspek demografi kandidat. Kondisi ini berpotensi menurunkan konsistensi dan efektivitas dalam proses seleksi karyawan baru.
+
+Dengan adanya model machine learning yang diusulkan, diharapkan dapat mengisi gap ini dengan menyediakan alat bantu yang mampu menganalisis data historis secara cepat dan akurat. Model ini akan membantu HR dalam mengidentifikasi kandidat potensial berdasarkan fitur-fitur yang relevan, sehingga mengurangi ketergantungan pada penilaian subjektif dan mempercepat proses seleksi. Selain itu, model ini juga akan memberikan wawasan tentang faktor-faktor kunci yang memengaruhi keputusan perekrutan, sehingga perusahaan dapat mengoptimalkan strategi rekrutmen mereka ke depannya.
+
+\subsection{Ideal Condition \& Expected Impact}
+Sistem mampu mengidentifikasi kandidat potensial secara cepat, objektif, dan tepat sasaran melalui pemetaan kandidat yang layak direkrut. Dampaknya, proses pengambilan keputusan menjadi lebih efisien sehingga HR dapat memfokuskan waktu pada kandidat yang benar-benar potensial dan sesuai kebutuhan perusahaan.
+
+
 
 

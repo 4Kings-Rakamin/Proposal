@@ -38,8 +38,8 @@ Gambar \ref{fig:crisp-dm} menggambarkan alur kerja CRISP-DM yang terdiri dari en
 Exploratory Data Analysis (EDA) adalah proses awal dalam analisis data yang bertujuan untuk memahami karakteristik dan pola dalam dataset. EDA melibatkan berbagai teknik visualisasi dan statistik untuk mengeksplorasi data, mengidentifikasi outlier, dan menemukan hubungan antara variabel. Proses ini sangat penting karena membantu dalam mengarahkan langkah-langkah selanjutnya dalam analisis data, seperti pemilihan fitur dan pemodelan. \parencite{tukey1977exploratory}
 
 \subsection{T-Test}
-T-Test adalah metode statistik yang digunakan untuk membandingkan rata-rata dari dua kelompok data. Uji ini membantu menentukan apakah perbedaan antara kedua kelompok tersebut signifikan secara statistik atau hanya terjadi secara kebetulan. T-Test dapat digunakan dalam berbagai konteks, seperti membandingkan hasil tes antara dua kelompok siswa atau mengevaluasi efektivitas dua metode pengajaran yang berbeda. Hasil dari uji T-Test memberikan nilai p-value yang digunakan untuk menilai signifikansi perbedaan antara kedua kelompok. 
-%\parencite{de2011introduction}
+T-Test adalah metode statistik yang digunakan untuk membandingkan rata-rata dari dua kelompok data. Uji ini membantu menentukan apakah perbedaan antara kedua kelompok tersebut signifikan secara statistik atau hanya terjadi secara kebetulan. T-Test dapat digunakan dalam berbagai konteks, seperti membandingkan hasil tes antara dua kelompok siswa atau mengevaluasi efektivitas dua metode pengajaran yang berbeda. Hasil dari uji T-Test memberikan nilai p-value yang digunakan untuk menilai signifikansi perbedaan antara kedua kelompok. \parencite{deveaux2011intro}
+
 %rumus t-test
 Rumus untuk menghitung nilai T-Test ($t$) adalah sebagai berikut:
 \begin{equation}
@@ -60,7 +60,7 @@ Singkatnya uji t-test ini memudahkan kita dalam membandingkan dua kelompok data 
 
 
 \subsection{Chi Square Test}
-Chi Square Test adalah metode statistik yang digunakan untuk menguji hubungan antara dua variabel kategorikal. Uji ini membandingkan frekuensi yang diamati dalam setiap kategori dengan frekuensi yang diharapkan jika tidak ada hubungan antara variabel. Hasil dari uji Chi Square memberikan nilai p-value yang digunakan untuk menentukan apakah hubungan antara variabel tersebut signifikan secara statistik. 
+Chi Square Test adalah metode statistik yang digunakan untuk menguji hubungan antara dua variabel kategorikal. Uji ini membandingkan frekuensi yang diamati dalam setiap kategori dengan frekuensi yang diharapkan jika tidak ada hubungan antara variabel. Hasil dari uji Chi Square memberikan nilai p-value yang digunakan untuk menentukan apakah hubungan antara variabel tersebut signifikan secara statistik. \parencite{agresti2018statistical}
 % \parencite{agresti2018statistical}
 
 %rumus uji chi square
@@ -80,7 +80,7 @@ Apabila p-value lebih kecil dari tingkat signifikansi (misalnya 0,05), maka kita
 %\parencite{agresti2018statistical}
 
 \subsection{Standard Scaler}
-Standard Scaler adalah teknik normalisasi data yang digunakan untuk mengubah fitur numerik sehingga memiliki rata-rata (mean) nol dan standar deviasi (standard deviation) satu. Proses ini membantu dalam mengurangi skala variabilitas antar fitur, sehingga model machine learning dapat belajar lebih efektif. Standard Scaler sangat berguna ketika fitur-fitur dalam dataset memiliki rentang nilai yang berbeda-beda, karena dapat meningkatkan konvergensi dan kinerja model. 
+Standard Scaler adalah teknik normalisasi data yang digunakan untuk mengubah fitur numerik sehingga memiliki rata-rata (mean) nol dan standar deviasi (standard deviation) satu. Proses ini membantu dalam mengurangi skala variabilitas antar fitur, sehingga model machine learning dapat belajar lebih efektif. Standard Scaler sangat berguna ketika fitur-fitur dalam dataset memiliki rentang nilai yang berbeda-beda, karena dapat meningkatkan konvergensi dan kinerja model. \parencite{jain2016feature}
 %\parencite{jain2016feature}
 Rumus untuk menghitung nilai yang telah dinormalisasi ($z$) menggunakan Standard Scaler adalah sebagai berikut:
 
@@ -96,6 +96,86 @@ Dimana:
     \item $X - \mu$ = selisih antara nilai asli dan rata-rata
     \item $\frac{(X - \mu)}{\sigma}$ = hasil pembagian selisih dengan standar deviasi
 \end{itemize}
+
+Dengan menggunakan Standard Scaler, setiap fitur numerik dalam dataset akan diubah sehingga memiliki distribusi yang seragam, yang pada gilirannya dapat meningkatkan performa model machine learning.
+
+\subsection{Logistic Regression}
+Logistic Regression adalah metode statistik yang digunakan untuk memodelkan hubungan antara satu atau lebih variabel independen (fitur) dengan variabel dependen biner (target). Metode ini digunakan untuk memprediksi probabilitas kejadian suatu peristiwa, seperti apakah seorang kandidat akan diterima atau ditolak dalam proses perekrutan. Logistic Regression menggunakan fungsi logit untuk mengubah output linier menjadi probabilitas yang berada dalam rentang 0 hingga 1. \parencite{hosmer2013applied}
+%\parencite{hosmer2013applied}
+Rumus untuk menghitung probabilitas ($p$) menggunakan Logistic Regression adalah sebagai berikut:
+\begin{equation}
+    p = \frac{1}{1 + e^{-(\beta_0 + \beta_1X_1 + \beta_2X_2 + ... + \beta_nX_n)}}
+\end{equation}
+
+Dimana:
+\begin{itemize}
+    \item $p$ = probabilitas kejadian (misalnya, kandidat diterima)
+    \item $e$ = basis dari logaritma natural (sekitar 2,718)
+    \item $\beta_0$ = intercept (konstanta)
+    \item $\beta_1, \beta_2, ..., \beta_n$ = koefisien regresi untuk masing-masing fitur
+    \item $X_1, X_2, ..., X_n$ = nilai dari fitur-fitur independen
+    \item $\beta_0 + \beta_1X_1 + \beta_2X_2 + ... + \beta_nX_n$ = kombinasi linier dari fitur-fitur
+\end{itemize}
+
+Logistic Regression sangat berguna dalam berbagai aplikasi, termasuk analisis risiko kredit, diagnosis medis, dan prediksi perilaku konsumen. Dengan kemampuannya untuk memberikan interpretasi yang jelas melalui koefisien regresi, metode ini memungkinkan pemahaman yang lebih baik tentang faktor-faktor yang mempengaruhi keputusan biner.
+
+\subsection{Decision Tree}
+Decision Tree adalah algoritma machine learning yang digunakan untuk klasifikasi dan regresi. Algoritma ini bekerja dengan membagi data menjadi subset berdasarkan fitur-fitur tertentu, sehingga membentuk struktur pohon yang terdiri dari simpul (nodes) dan cabang (branches). Setiap simpul mewakili keputusan berdasarkan nilai fitur, sementara cabang menghubungkan simpul-simpul tersebut. Proses pembagian data berlanjut hingga mencapai simpul daun (leaf nodes) yang memberikan prediksi akhir. Decision Tree sangat populer karena kemampuannya untuk menangani data kategorikal dan numerik, serta memberikan interpretasi yang mudah dipahami.
+
+Rumus untuk menghitung impurity menggunakan Gini Index ($G$) adalah sebagai berikut:
+
+\begin{equation}
+    G = 1 - \sum_{i=1}^{C} p_i^2
+\end{equation}
+
+Dimana:
+\begin{itemize}
+    \item $G$ = nilai Gini Index
+    \item $C$ = jumlah kelas dalam target
+    \item $p_i$ = proporsi dari kelas ke-i dalam subset data
+    \item $\sum_{i=1}^{C} p_i^2$ = penjumlahan kuadrat proporsi untuk semua kelas
+    \item $1 - \sum_{i=1}^{C} p_i^2$ = hasil pengurangan dari 1 dengan penjumlahan kuadrat proporsi
+\end{itemize}
+
+Decision Tree sangat berguna dalam berbagai aplikasi, termasuk diagnosis medis, analisis risiko kredit, dan prediksi perilaku konsumen. Dengan kemampuannya untuk memberikan interpretasi yang jelas melalui struktur pohon, metode ini memungkinkan pemahaman yang lebih baik tentang faktor-faktor yang mempengaruhi keputusan klasifikasi.
+
+\subsection{Random Forest}
+Random Forest adalah algoritma ensemble learning yang digunakan untuk klasifikasi dan regresi. Algoritma ini bekerja dengan membangun sejumlah besar pohon keputusan (decision trees) secara acak dan menggabungkan hasil prediksi dari masing-masing pohon untuk menghasilkan prediksi akhir yang lebih akurat dan stabil. Random Forest mengurangi risiko overfitting yang sering terjadi pada pohon keputusan tunggal dengan cara mengambil rata-rata (untuk regresi) atau mode (untuk klasifikasi) dari hasil prediksi semua pohon dalam hutan. \parencite{breiman2001random}
+%\parencite{breiman2001random}
+
+Rumus untuk menghitung prediksi akhir ($\hat{y}$) dalam Random Forest adalah sebagai berikut:
+
+\begin{equation}
+    \hat{y} = \frac{1}{T} \sum_{t=1}^{T} h_t(X)
+\end{equation}
+Dimana:
+\begin{itemize}
+    \item $\hat{y}$ = prediksi akhir dari Random Forest
+    \item $T$ = jumlah pohon keputusan dalam hutan
+    \item $h_t(X)$ = prediksi dari pohon keputusan ke-t untuk input $X$
+    \item $\sum_{t=1}^{T} h_t(X)$ = penjumlahan prediksi dari semua pohon keputusan
+    \item $\frac{1}{T} \sum_{t=1}^{T} h_t(X)$ = hasil pembagian penjumlahan dengan jumlah pohon untuk mendapatkan rata-rata prediksi
+\end{itemize}
+
+Random Forest sangat berguna dalam berbagai aplikasi, termasuk diagnosis medis, analisis risiko kredit, dan prediksi perilaku konsumen. Dengan kemampuannya untuk menangani data yang kompleks dan memberikan interpretasi yang jelas melalui fitur penting (feature importance), metode ini memungkinkan pemahaman yang lebih baik tentang faktor-faktor yang mempengaruhi keputusan klasifikasi atau regresi.
+
+\subsection{XGBoost}
+XGBoost (Extreme Gradient Boosting) adalah algoritma machine learning yang digunakan untuk klasifikasi dan regresi. Algoritma ini merupakan implementasi dari teknik boosting yang menggabungkan beberapa model lemah (weak learners), biasanya pohon keputusan, untuk membentuk model yang lebih kuat dan akurat. XGBoost dikenal karena kemampuannya dalam menangani data besar dan kompleks, serta memberikan performa yang tinggi melalui optimasi paralel dan regularisasi.
+
+Rumus untuk menghitung prediksi akhir ($\hat{y}$) dalam XGBoost adalah sebagai berikut:
+\begin{equation}
+    \hat{y} = \sum_{k=1}^{K} f_k(X)
+\end{equation}
+
+Dimana:
+\begin{itemize}
+    \item $\hat{y}$ = prediksi akhir dari XGBoost
+    \item $K$ = jumlah model lemah (pohon keputusan) yang digabungkan
+    \item $f_k(X)$ = prediksi dari model lemah ke-k untuk input $X$
+    \item $\sum_{k=1}^{K} f_k(X)$ = penjumlahan prediksi dari semua model lemah
+\end{itemize}
+
+XGBoost sangat berguna dalam berbagai aplikasi, termasuk diagnosis medis, analisis risiko kredit, dan prediksi perilaku konsumen. Dengan kemampuannya untuk menangani data yang kompleks dan memberikan interpretasi yang jelas melalui fitur penting (feature importance), metode ini memungkinkan pemahaman yang lebih baik tentang faktor-faktor yang mempengaruhi keputusan klasifikasi atau regresi.
 
 
 
