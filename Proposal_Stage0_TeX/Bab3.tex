@@ -304,6 +304,254 @@ Fitur numerik dalam dataset ini meliputi \texttt{Age}, \texttt{ExperienceYears},
     \end{tabular}
 \end{table}
 
-    
+Dari tabel statistik deskriptif, kita dapat melihat bahwa fitur-fitur numerik memiliki variasi yang cukup besar dalam nilai rata-rata, standar deviasi, dan rentang nilai. Misalnya, \texttt{Age} memiliki rata-rata sekitar 35 tahun dengan rentang dari 20 hingga 50 tahun, sementara \texttt{ExperienceYears} memiliki rata-rata sekitar 7.69 tahun dengan rentang dari 0 hingga 15 tahun. Fitur-fitur seperti \texttt{InterviewScore}, \texttt{SkillScore}, dan \texttt{PersonalityScore} menunjukkan distribusi yang luas dengan nilai minimum 0 dan maksimum 100, yang menunjukkan adanya variasi signifikan dalam penilaian kandidat.
+
+Untuk visualisasi distribusi fitur numerik, kita dapat menggunakan boxplot.boxplot memberikan informasi tentang median, kuartil, dan potensi outlier. Gambar \ref{fig:boxplot} menunjukkan boxplot dari beberapa fitur numerik utama.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{gambar/boxplot_num.png}
+    \caption{Boxplot Fitur Numerik}
+    \label{fig:boxplot}
+\end{figure}
+
+Dari Gambar \ref{fig:boxplot}, dapat dilihat bahwa semua fitur numerik memiliki tipe distribusi normal serta bersih dari outlier. Hal ini menunjukkan bahwa data sudah cukup baik untuk digunakan dalam pemodelan tanpa perlu penanganan khusus terhadap outlier.
+
+Agar kita lebih memahami hubungan antar fitur numerik, kita dapat menggunakan heatmap untuk memvisualisasikan korelasi antar fitur. Gambar \ref{fig:heatmap} menunjukkan heatmap dari korelasi fitur numerik dalam dataset.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{gambar/heatmap.png}
+    \caption{Heatmap Korelasi Fitur Numerik}
+    \label{fig:heatmap}
+\end{figure}
+
+Dari Gambar \ref{fig:heatmap}, kita dapat melihat bahwa sebagian besar fitur numerik memiliki korelasi yang rendah hingga sedang satu sama lain, dengan nilai korelasi berkisar antara -0.03 hingga 0.2. Tidak ada fitur yang menunjukkan korelasi sangat tinggi (di atas 0.8), yang mengindikasikan bahwa tidak ada multikolinearitas yang signifikan di antara fitur-fitur tersebut. Fitur-fitur seperti \texttt{InterviewScore}, \texttt{SkillScore}, dan \texttt{PersonalityScore} menunjukkan korelasi positif yang signifikan dengan label target (Hiring Decision), yang masuk akal karena ketiga fitur ini berkaitan dengan penilaian kandidat.
+
+Agar memiliki insight yang kuat terhadap data, digunakan juga visualisasi barplot untuk melihat hubungan antara fitur numerik dengan target. Adapun pertanyaan yang dapat dijawab melalui analisis ini antara lain:
+
+\begin{enumerate}
+    \item Apakah kandidat yang diterima memiliki usia yang lebih tinggi dibandingkan yang tidak diterima?
+    \item Apakah kandidat yang diterima memiliki pengalaman kerja yang lebih banyak dibandingkan yang tidak diterima?
+    \item Apakah kandidat yang diterima memiliki riwayat bekerja di lebih banyak perusahaan dibandingkan yang tidak diterima?
+    \item Apakah kandidat yang diterima tinggal lebih dekat ke perusahaan dibandingkan yang tidak diterima?
+    \item Apakah kandidat yang diterima memiliki Skor Wawancara yang lebih tinggi dibandingkan yang tidak diterima?
+    \item Apakah kandidat yang diterima memiliki skor Keterampilan yang lebih tinggi dibandingkan yang tidak diterima?
+    \item Apakah kandidat yang diterima memiliki skor Kepribadian yang lebih tinggi dibandingkan yang tidak diterima?
+\end{enumerate}
+
+Untuk menjawab pertanyaan-pertanyaan tersebut, kita dapat membuat bar plot dan box plot yang menunjukkan perbandingan rata-rata dari fitur numerik berdasarkan keputusan perekrutan (HiringDecision). Untuk menjawab pertanyaan pertama, kita dapat membuat box plot yang menunjukkan perbandingan rata-rata usia kandidat yang diterima dan tidak diterima. Gambar \ref{fig:usia} menunjukkan box plot dari perbandingan rata-rata usia berdasarkan HiringDecision dalam dataset.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{gambar/usia.png}
+    \caption{Box Plot Perbandingan Rata-Rata Usia Berdasarkan HiringDecision}
+    \label{fig:usia}
+\end{figure}
+
+Dapat dilihat pada Gambar \ref{fig:usia} bahwa tidak ada perbedaan yang signifikan dalam usia antara kandidat yang diterima dan tidak diterima. Rata-rata usia untuk kedua kelompok tersebut tampak cukup mirip, menunjukkan bahwa usia mungkin bukan faktor penentu utama dalam keputusan perekrutan.
+
+Untuk menjawab pertanyaan kedua, kita dapat membuat box plot yang menunjukkan perbandingan rata-rata pengalaman kerja kandidat yang diterima dan tidak diterima. Gambar \ref{fig:exp} menunjukkan box plot dari perbandingan rata-rata pengalaman kerja berdasarkan HiringDecision dalam dataset.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{gambar/exp.png}
+    \caption{Box Plot Perbandingan Rata-Rata Pengalaman Kerja Berdasarkan HiringDecision}
+    \label{fig:exp}
+\end{figure}
+
+Dapat dilihat pada Gambar \ref{fig:exp} bahwa kandidat yang diterima cenderung memiliki pengalaman kerja yang sama dengan kandidat yang tidak diterima. Namun, dapat dilihat bahwa 50\% dari kandidat yang diterima memiliki pengalaman kerja lebih dari 6 tahun yang menandakan bahwa perusahaan cendrung menerima kandidat yang memiliki pengalaman kerja lebih dari besar walaupun hal tersebut bukan menjadi faktor penentu utama dalam keputusan perekrutan karena 50\% dari kandidat yang tidak diterima juga berasal dari rentang pengalaman kerja yang tinggi.
+
+Untuk menjawab pertanyaan ketiga, kita dapat membuat box plot yang menunjukkan perbandingan rata-rata jumlah perusahaan sebelumnya tempat kandidat bekerja berdasarkan HiringDecision. Gambar \ref{fig:prev} menunjukkan box plot dari perbandingan rata-rata jumlah perusahaan sebelumnya berdasarkan HiringDecision dalam dataset.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{gambar/prev.png}
+    \caption{Box Plot Perbandingan Rata-Rata Jumlah Perusahaan Sebelumnya Berdasarkan HiringDecision}
+    \label{fig:prev}
+\end{figure}
+
+Dapat dilihat pada Gambar \ref{fig:prev} bahwa tidak ada perbedaan yang signifikan dalam jumlah perusahaan sebelumnya antara kandidat yang diterima dan tidak diterima. Rata-rata jumlah perusahaan sebelumnya untuk kedua kelompok tersebut tampak cukup mirip, menunjukkan bahwa jumlah perusahaan sebelumnya mungkin bukan faktor penentu utama dalam keputusan perekrutan.
+
+Untuk menjawab pertanyaan keempat, kita dapat membuat box plot yang menunjukkan perbandingan rata-rata jarak dari rumah ke perusahaan berdasarkan HiringDecision. Gambar \ref{fig:dist} menunjukkan box plot dari perbandingan rata-rata jarak berdasarkan HiringDecision dalam dataset.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{gambar/dist.png}
+    \caption{Box Plot Perbandingan Rata-Rata Jarak dari Rumah ke Perusahaan Berdasarkan HiringDecision}
+    \label{fig:dist}
+\end{figure}
+
+Dapat dilihat pada Gambar \ref{fig:dist} bahwa tidak ada perbedaan yang signifikan dalam jarak dari rumah ke perusahaan antara kandidat yang diterima dan tidak diterima. Rata-rata jarak untuk kedua kelompok tersebut tampak cukup mirip, menunjukkan bahwa jarak dari rumah ke perusahaan mungkin bukan faktor penentu utama dalam keputusan perekrutan.
+
+Untuk menjawab pertanyaan kelima, kita dapat membuat box plot yang menunjukkan perbandingan rata-rata skor wawancara berdasarkan HiringDecision. Gambar \ref{fig:interview} menunjukkan box plot dari perbandingan rata-rata skor wawancara berdasarkan HiringDecision dalam dataset.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{gambar/interview.png}
+    \caption{Box Plot Perbandingan Rata-Rata Skor Wawancara Berdasarkan HiringDecision}
+    \label{fig:interview}
+\end{figure}
+
+Dapat dilihat pada Gambar \ref{fig:interview} bahwa kandidat yang diterima cenderung memiliki skor wawancara yang lebih tinggi dibandingkan dengan kandidat yang tidak diterima. Rata-rata skor wawancara untuk kandidat yang diterima tampak lebih tinggi, menunjukkan bahwa skor wawancara mungkin menjadi faktor penting dalam keputusan perekrutan.
+
+Untuk menjawab pertanyaan keenam, kita dapat membuat box plot yang menunjukkan perbandingan rata-rata skor keterampilan berdasarkan HiringDecision. Gambar \ref{fig:skill} menunjukkan box plot dari perbandingan rata-rata skor keterampilan berdasarkan HiringDecision dalam dataset.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{gambar/skill.png}
+    \caption{Box Plot Perbandingan Rata-Rata Skor Keterampilan Berdasarkan HiringDecision}
+    \label{fig:skill}
+\end{figure}
+
+Dapat dilihat pada Gambar \ref{fig:skill} bahwa kandidat yang diterima cenderung memiliki skor keterampilan yang lebih tinggi dibandingkan dengan kandidat yang tidak diterima. Rata-rata skor keterampilan untuk kandidat yang diterima tampak lebih tinggi, menunjukkan bahwa skor keterampilan mungkin menjadi faktor penting dalam keputusan perekrutan.
+
+Untuk menjawab pertanyaan ketujuh, kita dapat membuat box plot yang menunjukkan perbandingan rata-rata skor kepribadian berdasarkan HiringDecision. Gambar \ref{fig:personality} menunjukkan box plot dari perbandingan rata-rata skor kepribadian berdasarkan HiringDecision dalam dataset.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{gambar/personality.png}
+    \caption{Box Plot Perbandingan Rata-Rata Skor Kepribadian Berdasarkan HiringDecision}
+    \label{fig:personality}
+\end{figure}
+
+Dapat dilihat pada Gambar \ref{fig:personality} bahwa kandidat yang diterima cenderung memiliki skor kepribadian yang lebih tinggi dibandingkan dengan kandidat yang tidak diterima. Rata-rata skor kepribadian untuk kandidat yang diterima tampak lebih tinggi, menunjukkan bahwa skor kepribadian mungkin menjadi faktor penting dalam keputusan perekrutan.
+
+
+
+Dengan analisa yang dilakukan sebelumnya, kita sudah mengetahui bahwa data sudah bersih dan siap untuk dilakukan pemodelan, kita juga sudah mengetahui fitur-fitur mana saja yang memiliki korelasi yang cukup tinggi dengan target dan mana fitur yang tidak memiliki korelasi sama sekali. Namun uji statistik tetap perlu dilakukan untuk memastikan fitur-fitur yang akan digunakan dalam pemodelan adalah fitur yang benar-benar memiliki korelasi yang signifikan dengan target. Karena label target adalah kategorikal (1/0) dan fitur yang akan diuji adalah numerik, maka uji statistik yang tepat adalah uji t-test. Berikut adalah hasil uji t-test yang dilakukan pada fitur-fitur numerik dalam dataset. Tabel \ref{tb:t-test} merangkum hasil uji t-test untuk setiap fitur numerik.
+
+\begin{table}[H]
+    \centering
+    \caption{Hasil Uji T-Test Fitur Numerik}
+    \label{tb:t-test}
+    \begin{tabular}{|l|l|l|l|}
+    \hline
+    \rowcolor[HTML]{EFEFEF} 
+    Fitur               & T-Stat & P-Value & Kesimpulan                                                                                     \\ \hline
+    Age                 & 0.0716      & $9.43 \times 10^{-1}$ & Tidak ada perbedaan signifikan (\(p >= 0.05\))                                                     \\ \hline
+    ExperienceYears     & 4.7770      & $1.95 \times 10^{-6}$  & Ada perbedaan signifikan (\(p < 0.05\))                                                            \\ \hline
+    PreviousCompanies   & 1.7056      & $8.83 \times 10^{-2}$  & Tidak ada perbedaan signifikan (\(p >= 0.05\))                                                     \\ \hline
+    DistanceFromCompany & -0.6500     & $5.16 \times 10^{-1}$  & Tidak ada perbedaan signifikan (\(p >= 0.05\))                                                     \\ \hline
+    InterviewScore      & 5.7146      & $1.32 \times 10^{-8}$  & Ada perbedaan signifikan (\(p < 0.05\))                                                            \\ \hline
+    SkillScore          & 8.0515      & $1.7 \times 10^{-15}$  & Ada perbedaan signifikan (\(p < 0.05\))                                                            \\ \hline
+    PersonalityScore    & 6.6436      & $4.27 \times 10^{-11}$  & Ada perbedaan signifikan (\(p < 0.05\))                                                            \\ \hline
+    \end{tabular}
+\end{table}
+
+Dari tabel hasil uji t-test, kita dapat melihat bahwa fitur-fitur seperti \texttt{ExperienceYears}, \texttt{InterviewScore}, \texttt{SkillScore}, dan \texttt{PersonalityScore} menunjukkan perbedaan yang signifikan antara kelompok kandidat yang diterima dan tidak diterima (HiringDecision) (\(p < 0.05\)). Ini mengindikasikan bahwa fitur-fitur ini memiliki pengaruh yang kuat terhadap keputusan perekrutan dan sebaiknya dipertimbangkan dalam pemodelan. Sebaliknya, fitur seperti \texttt{Age}, \texttt{PreviousCompanies}, dan \texttt{DistanceFromCompany} tidak menunjukkan perbedaan yang signifikan (\(p >= 0.05\)), sehingga mungkin kurang relevan untuk dimasukkan dalam model prediksi.
+
+\subsection{Analisis Fitur Kategorikal}
+Fitur kategorikal dalam dataset ini meliputi Gender, EducationLevel, dan RecruitmentStrategy. Untuk memahami karakteristik dari fitur-fitur ini, kita dapat melakukan analisis frekuensi dan visualisasi distribusi data. Adapun beberapa pertanyaan yang dapat dijawab melalui analisis ini antara lain:
+
+\begin{enumerate}
+    \item Berapa perbandingan jumlah kandidat yang diterima dan tidak ?
+    \item Apakah EducationLevel berperan besar dalam keputusan hiring ?
+    \item Berapa perbandingan pria dan wanita yang diterima dan tidak ?
+    \item Apakah RecruitmentStrategy berperan besar dalam keputusan hiring ?
+\end{enumerate}
+
+Untuk menjawab pertanyaan-pertanyaan tersebut, kita dapat menggunakan visualisasi seperti bar plot. Untuk menjawab pertanyaan pertama, kita dapat membuat bar plot yang menunjukkan jumlah kandidat yang diterima dan tidak diterima. Gambar \ref{fig:barplot1} menunjukkan bar plot dari distribusi HiringDecision dalam dataset.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{gambar/barplot1.png}
+    \caption{Bar Plot Distribusi HiringDecision}
+    \label{fig:barplot1}
+\end{figure}
+
+Didapat perbandingnan 31:69, artinya 31\% kandidat diterima dan 69\% tidak diterima. Hal ini menunjukkan bahwa proses perekrutan cukup selektif, dengan hanya sekitar sepertiga dari total kandidat yang berhasil diterima. Informasi ini penting untuk memahami tingkat persaingan di antara kandidat dan dapat membantu dalam merancang strategi perekrutan yang lebih efektif.
+
+% Untuk menjawab pertanyaan kedua, kita dapat membuat bar plot yang menunjukkan hubungan antara InterviewScore dan HiringDecision. Gambar \ref{fig:barplot2} menunjukkan bar plot dari distribusi InterviewScore berdasarkan HiringDecision.
+
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.6\textwidth]{gambar/barplot2.png}
+%     \caption{Bar Plot InterviewScore vs HiringDecision}
+%     \label{fig:barplot2}
+% \end{figure}
+
+% Dari Gambar \ref{fig:barplot2}, kita dapat melihat bahwa kandidat dengan InterviewScore yang lebih tinggi cenderung memiliki peluang lebih besar untuk diterima (HiringDecision = 1). Hal ini menunjukkan bahwa skor wawancara merupakan faktor penting dalam keputusan perekrutan, dan kandidat yang tampil baik dalam wawancara memiliki peluang lebih besar untuk berhasil dalam proses seleksi.
+
+Untuk menjawab pertanyaan kedua, kita dapat membuat bar plot yang menunjukkan hubungan antara EducationLevel dan HiringDecision. Gambar \ref{fig:barplot3} menunjukkan bar plot dari distribusi EducationLevel berdasarkan HiringDecision.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{gambar/barplot3.png}
+    \caption{Bar Plot EducationLevel vs HiringDecision}
+    \label{fig:barplot3}
+\end{figure}
+
+Dari Gambar \ref{fig:barplot3}, kita dapat melihat bahwa kandidat dengan EducationLevel yang lebih tinggi cenderung memiliki peluang lebih besar untuk diterima (HiringDecision = 1). Namun ada beberapa temuan unik, seperti kandidat dengan EducationLevel 4 (S3/PhD) memiliki peluang diterima yang lebih rendah dibandingkan dengan kandidat dengan EducationLevel 2 (S1 Tipe 2) dan 3 (S2). Hal ini menunjukkan bahwa meskipun tingkat pendidikan yang lebih tinggi umumnya dianggap sebagai keunggulan, faktor lain seperti pengalaman kerja, keterampilan, dan penilaian wawancara juga memainkan peran penting dalam keputusan perekrutan.
+
+Untuk menjawab pertanyaan ketiga, kita dapat membuat bar plot yang menunjukan hubungan antara Gender dan HiringDecision. Gambar \ref{fig:barplot4} menunjukan bar plot dari distribusi Gender berdasarkan HiringDecision.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{gambar/barplot4.png}
+    \caption{Bar Plot Gender vs HiringDecision}
+    \label{fig:barplot4}
+\end{figure}
+
+Dari Gambar \ref{fig:barplot4}, kita dapat melihat bahwa kandidat Pria maupun Wanita memiliki proporsi yang seimbang baik yang diterima maupun yang tidak diterima. Hal ini menunjukkan bahwa proses perekrutan dalam dataset ini tidak menunjukkan bias yang signifikan terhadap jenis kelamin, dan keputusan perekrutan lebih dipengaruhi oleh faktor-faktor lain seperti keterampilan, pengalaman, dan penilaian wawancara.
+
+Untuk menjawab pertanyaan keempat, kita dapat membuat bar plot yang menunjukkan hubungan antara RecruitmentStrategy dan HiringDecision. Gambar \ref{fig:barplot5} menunjukkan bar plot dari distribusi RecruitmentStrategy berdasarkan HiringDecision.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{gambar/barplot5.png}
+    \caption{Bar Plot RecruitmentStrategy vs HiringDecision}
+    \label{fig:barplot5}
+\end{figure}
+
+Dari Gambar \ref{fig:barplot5}, kita dapat melihat bahwa kandidat yang direkrut melalui strategi agresif (RecruitmentStrategy = 1) memiliki peluang lebih besar untuk diterima (HiringDecision = 1) dibandingkan dengan strategi moderat (2) dan konservatif (3). Hal ini menunjukkan bahwa strategi perekrutan yang lebih proaktif dan intensif cenderung menghasilkan kandidat yang lebih sesuai dengan kebutuhan perusahaan, sehingga meningkatkan peluang mereka untuk diterima dalam proses seleksi.
+
+Dengan analisa yang dilakukan sebelumnya, kita sudah mengetahui bahwa beberapa fitur kategorikal memiliki korelasi yang signifikan dengan target, seperti EducationLevel dan RecruitmentStrategy. Namun uji statistik tetap perlu dilakukan untuk memastikan fitur-fitur yang akan digunakan dalam pemodelan adalah fitur yang benar-benar memiliki korelasi yang signifikan dengan target. Karena label target adalah kategorikal (1/0) dan fitur yang akan diuji juga kategorikal, maka uji statistik yang tepat adalah uji Chi-Square. Berikut adalah hasil uji Chi-Square yang dilakukan pada fitur-fitur kategorikal dalam dataset. Tabel \ref{tb:chi-square} merangkum hasil uji Chi-Square untuk setiap fitur kategorikal.
+
+% Chi-square test for Gender: chi2 = 0.0009776541, p-value = 0.97505624092456311124976764403982087969779968261718750000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+%   -> No significant association between Gender and HiringDecision (p >= 0.05)
+% Chi-square test for EducationLevel: chi2 = 103.6746891896, p-value = 0.00000000000000000000025190323277589304132766103274650912631354441326531525047926129631803426889291586121544241905212402343750000000000000000000000000000000000000000000000000000000000000000000000000000
+%   -> Significant association between EducationLevel and HiringDecision (p < 0.05)
+% Chi-square test for RecruitmentStrategy: chi2 = 489.6813086798, p-value = 0.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004645739720431345829456101735102532682645682331095024667245378330315132293497743805320262196267
+%   -> Significant association between RecruitmentStrategy and HiringDecision (p < 0.05)
+
+
+\begin{table}[H]
+    \centering
+    \caption{Hasil Uji Chi-Square Fitur Kategorikal}
+    \label{tb:chi-square}
+    \begin{tabular}{|l|l|l|l|}
+    \hline
+    \rowcolor[HTML]{EFEFEF} 
+    Fitur               & $Chi^{2}$    & P-Values     & Kesimpulan                     \\ \hline
+    Gender              & 0.9750 & $9.75 \times 10^{-1}$ & Tidak ada perbedaan signifikan (\(p >= 0.05\)) \\ \hline
+    EducationLevel      & 103.67 & $2.52 \times 10^{-22}$ & Ada perbedaan signifikan (\(p < 0.05\))       \\ \hline
+    RecruitmentStrategy & 489.68 & $4.65 \times 10^{-62}$ & Ada perbedaan signifikan (\(p < 0.05\))      \\ \hline
+    \end{tabular}
+\end{table}
+
+Dari tabel \ref{tb:chi-square} dapat kita lihat bahwa analisa kita sebelumnya terbukti benar terkait perbedaan signifikan, terutama pada fitur Gender yang tidak memiliki perbedaan signifikan. Sedangkan pada fitur EducationLevel dan RecruitmentStrategy terbukti memiliki perbedaan yang signifikan. Dengan demikian, fitur-fitur ini dapat dipertimbangkan untuk dimasukkan dalam model prediksi karena memiliki pengaruh yang kuat terhadap keputusan perekrutan.
+\newpage
+\subsection{Kesimpulan Hasil EDA}
+Berdasarkan analisis data yang telah dilakukan, dapat disimpulkan beberapa hal penting terkait fitur-fitur dalam dataset dan hubungannya dengan keputusan perekrutan (HiringDecision):
+
+\begin{enumerate}
+    \item Fitur numerik seperti \texttt{InterviewScore}, \texttt{SkillScore}, dan \texttt{PersonalityScore} menunjukkan perbedaan yang signifikan antara kandidat yang diterima dan tidak diterima. Fitur-fitur ini memiliki pengaruh yang kuat terhadap keputusan perekrutan dan sebaiknya dipertimbangkan dalam pemodelan.
+    \item Fitur kategorikal seperti \texttt{EducationLevel} dan \texttt{RecruitmentStrategy} juga menunjukkan perbedaan yang signifikan dengan keputusan perekrutan. Kandidat dengan tingkat pendidikan yang lebih tinggi dan yang direkrut melalui strategi agresif cenderung memiliki peluang lebih besar untuk diterima.
+    \item Dari total 1500 kandidat yang ada, hanya sekitar 31\% yang diterima, menunjukkan bahwa proses perekrutan cukup selektif.
+    \item Tidak ada bias signifikan terhadap Usia dan jenis kelamin dalam proses perekrutan, dengan proporsi pria dan wanita yang diterima dan tidak diterima cukup seimbang serta rentang usia yang seimbang menandakan usia dan gender bukan faktor penentu utama dalam keputusan perekrutan. Sehingga tim perekrutan dapat dikatakan profesional dan objektif dalam menilai kandidat.
+    \item Fitur-fitur seperti \texttt{Age}, \texttt{PreviousCompanies}, dan \texttt{DistanceFromCompany} tidak menunjukkan perbedaan yang signifikan dengan keputusan perekrutan, sehingga mungkin kurang relevan untuk dimasukkan dalam model prediksi.
+    \item Berdasarkan hasil uji statistik, fitur-fitur yang memiliki perbedaan signifikan dengan keputusan perekrutan dapat diprioritaskan dalam pemodelan untuk meningkatkan akurasi prediksi.
+\end{enumerate}
+
+Dengan demikian, fitur-fitur yang telah diidentifikasi sebagai signifikan dapat digunakan untuk membangun model prediksi yang lebih akurat dalam menentukan keputusan perekrutan di masa depan. Langkah selanjutnya adalah melakukan pemodelan menggunakan fitur-fitur tersebut dan mengevaluasi kinerja model yang dihasilkan.
+
+\subsection{Feature Selection}
+\subsection{Preprocessing}
+
+
+
+
+
 
 
